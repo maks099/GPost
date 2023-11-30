@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.min.js"></script>
+    <link rel="stylesheet" href="../css/list.css" />
+    <link rel="stylesheet" href="../css/blur.css" />
+
+    <script type="text/javascript"
+        src="https://maps.google.com/maps/api/js?key=AIzaSyAb0FDX-kXAMDvawZWxn43QqTT8xW0QLc0&libraries=places&callback=Function.prototype"></script>
+    <script type="text/javascript"
+        src="https://rawgit.com/Logicify/jquery-locationpicker-plugin/master/dist/locationpicker.jquery.js"></script>
+    <title>Керування відділенням</title>
+    <link rel="icon" href="../icons/logo.png" type="image/x-icon">
+    <style>
+        body{
+            background-image: url('../pictures/bg_department.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar bg-light d-flex align-items-center">
+        <div class="container justify-content-between">
+            <a class="navbar-brand d-flex align-items-center" href="/">
+                <img src="../icons/logo.png" width="40" height="40" class="d-inline-block align-top mx-4" alt="">
+                <b class="text-dark" style="font-size: 1.5em;">G-Post</b>
+            </a>
+            <ul class="navbar-nav flex-row align-items-center">
+                <li class="nav-item px-2 d-flex flex-row">
+                    <a class="nav-link mx-2" href="/admin">
+                        <button type="button" class="btn btn-outline-light d-flex align-items-center">
+                            <i class="bi bi-shield mx-1 del-worker" style="font-size: 1.2rem;"></i>
+                            Панель адміністратора
+                        </button>
+                    </a>
+                  
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <%- include('../parts/flash.ejs') %>
+        <div class="container  d-flex flex-column" style="min-height: 75vh;">
+            <div class="col-12 p-4">
+                <div class="d-flex justify-content-around align-items-center flex-row p-lg-3 blured rounded mb-5">
+                    <h4 class="p-1"><%- department.name %></h4>
+                    <h5 class="p-1"><%- department.address %></h5>
+                </div>
+
+                <div class="blured-lg rounded p-4">
+                    <div class="d-flex flex-column flex-md-row  justify-content-between mb-4 align-items-center">
+                        <h4 >Відправлення користувачів</h4>
+                        <div class="d-flex flex-column flex-md-row justify-content-end" id="actionList">
+                            <button type="button" class="btn btn-warning d-flex align-items-center m-1" id="btnOnRoad">
+                                <i class="bi bi-globe-europe-africa mx-1" style="font-size: 1.2rem;"></i>
+                                В дорозі
+                            </button>
+                            <button type="button" class="btn btn-success d-flex align-items-center m-1" id="btnDelivered">
+                                <i class="bi bi-cart4 mx-1" style="font-size: 1.2rem;"></i>
+                                Доставлено
+                            </button>
+                            <button type="button" class="btn btn-primary d-flex align-items-center m-1" id="btnGiveToUser">
+                                <i class="bi bi-bag-check mx-1" style="font-size: 1.2rem;"></i>
+                                Видати відправлення
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class=" d-flex flex-row flex-md-column">
+                        <div class="overflow-auto" style="max-height: 70vh;">
+                            <input type="text" placeholder="Пошук по таблиці" id="tableSearch" class="form-control" />
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Код</th>
+                                        <th scope="col">Статус</th>
+                                        <th scope="col">Відомості</th>
+                                        <th scope="col">Дата оформлення</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="tableBody">
+                                
+                                </tbody>
+                            </table>
+                        </div>
+                    
+                    </div>
+                </div>
+            </div>
+        </div>
+            <%- include('../parts/footer.ejs') %>
+
+
+
+       
+
+
+        <script src="/socket.io/socket.io.js"></script>
+
+        <script>
+            let sendingArr = <%- JSON.stringify(sending_arr) %>;
+            const department = <%- JSON.stringify(department) %>;
+            var socket = io();
+            var workerPanel = true;
+        </script>
+
+        <script src="../scripts/status_helper.js"></script>
+        <script src="../scripts/admin/table.js"></script>
+        <script src="../scripts/table.js"></script>
+
+
+</body>
+
+
+</html>

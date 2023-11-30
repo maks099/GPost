@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../css/blur.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+    <title>G-Post</title>
+    <link rel="icon" href="../icons/logo.png" type="image/x-icon">
+    <style>
+        body {
+            background-image: url('../pictures/main_bg.svg');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar d-flex align-items-center bg-light">
+        <div class="container justify-content-between">
+            <a class="navbar-brand d-flex align-items-center" href="/">
+                <img src="../icons/logo.png" width="40" height="40" class="d-inline-block align-top mx-4" alt="">
+                <b class=" text-dark" style="font-size: 1.5em; ">G-Post</b>
+            </a>
+            <ul class="navbar-nav flex-row">
+                <li class="nav-item px-2">
+                    <a class="nav-link btn btn-primary text-light px-4 d-flex align-items-center" href="/login">
+                        <i class="bi bi-box-arrow-in-right me-2" style="font-size: 1.2rem; color: whitesmoke;"></i>
+                        Вхід
+                    </a>
+                </li>
+                <li class="nav-item px-2">
+                    <a class="nav-link btn btn-primary text-light px-4 d-flex align-items-center" href="/registration">
+                        <i class="bi bi-box-arrow-in-up me-2" style="font-size: 1.2rem; color: whitesmoke;"></i>
+                        Реєстрація
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <%- include('../parts/flash.ejs') %>
+
+        <section class="mt-5" style="min-height: 70vh;">
+            <div class="container-fluid d-flex justify-content-center">
+                <div class="col-11 col-md-9 justify-content-between">
+                    <div class="d-flex flex-column flex-md-row justify-content-center  align-items-center blured-lg p-4 rounded">
+                        <img src="../icons/logo.png"   class="d-inline-block img-fluid" style="width: 300px;" alt="">
+                        <h2 class= "p-4 text-center">
+                            G-Post — надійний поштовий сервіс, що гарантує якість та швидкість доставки Вашого
+                                відправлення
+                        </h2>
+                    </div>
+                    <div class="d-flex flex-column flex-md-row   justify-content-evenly align-items-center blured p-3 mt-5 rounded">
+                        <img src="../pictures/post_service.png" height="250"  class="d-inline-block ms-5" alt="">
+                        <h5 class="p-4 text-center me-5">
+                            Надійно: наш сервіс гарантує надійну доставку вашої пошти без затримок і втрат, забезпечуючи високий рівень сервісу та довіру від клієнтів.
+                        </h5>
+                    </div>
+                    <div class="d-flex flex-column flex-md-row justify-content-evenly align-items-center blured p-3 mt-5 rounded">
+                        <img src="../pictures/post_ui.png" height="250" class="d-inline-block me-5" alt="">
+                        <h5 class="p-4 text-center ms-5">
+                            Зручно: незалежно від розміру чи складності відправлення, ми забезпечуємо зручний та простий процес взаємодії користувача із сервісом.
+                        </h5>
+                    </div>
+                    <div class="d-flex flex-column flex-md-row justify-content-evenly align-items-center blured p-3 mt-5 rounded">
+                        <img src="../pictures/post_speed.png" height="250"  class="d-inline-block me-5" alt="">
+                        <h5 class="p-4 text-center ms-5">
+                            Швидко: Ваші листи, посилки та пакети будуть доставлені швидко, забезпечуючи швидку та ефективну послугу.
+                        </h5>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <%- include('../parts/footer.ejs') %>
+
+</body>
+
+</html>

@@ -1,0 +1,19 @@
+<div class="my-2 container-fluid d-flex justify-content-center">
+	<% if (flash) { %>
+    	<% if (flash['success']) { %>
+    		<div class="alert alert-success d-flex justify-content-center align-items-center" role="alert">
+                <i class="bi bi-check-circle mx-2" style="font-size: 1.75rem;"></i>
+				<%= flash['success'] %>
+			</div>
+    	<% } else if (flash['error']) { %>
+    		<div class="alert alert-danger d-flex justify-content-center align-items-center" role="alert">
+                <i class="bi bi-x-octagon mx-2" style="font-size: 1.75rem;"></i>
+				<%= flash['error'] %>
+			</div>
+		<% } else if (flash['warning']) { %>
+    		<div class="alert alert-warning d-flex justify-content-center align-items-center" role="alert">
+				<%= flash['warning'] %>
+			</div>
+    	<% } %>
+    <% } %>
+</div>

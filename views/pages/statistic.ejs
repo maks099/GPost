@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="../css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../css/blur.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css">
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/jquery.min.js"></script>
+    <link rel="stylesheet" href="../css/list.css" />
+
+    <title>Статистика</title>
+    <link rel="icon" href="../icons/logo.png" type="image/x-icon">
+    <style>
+        body{
+            background-image: url('../pictures/bg_statistic.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+
+<body>
+    <nav class="navbar bg-light d-flex align-items-center">
+        <div class="container justify-content-between">
+            <a class="navbar-brand d-flex align-items-center" href="/">
+                <img src="../icons/logo.png" width="40" height="40" class="d-inline-block align-top mx-4" alt="">
+                <b class="text-dark" style="font-size: 1.5em;">G-Post</b>
+            </a>
+            <ul class="navbar-nav flex-row align-items-center">
+                <li class="nav-item px-1">
+                    <button type="button" class="btn btn-outline-dark d-flex align-items-center mx-2"
+                    id="btnSaveStatistic">
+                        <i class="bi bi-file-bar-graph mx-1" style="font-size: 1.2rem;"></i>
+                        Зберегти файл
+                    </button>
+                </li>
+                <li class="nav-item px-1">
+                    <a class="nav-link mx-2" href="/admin">
+                        <button type="button" class="btn btn-outline-dark d-flex align-items-center">
+                            <i class="bi bi-shield mx-1 del-worker" style="font-size: 1.2rem;"></i>
+                            Панель адміністратора
+                        </button>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <%- include('../parts/flash.ejs') %>
+        <div class="container  d-flex flex-column" style="min-height: 75vh;">
+            <section class="col-12 d-flex flex-column justify-content-center align-items-center"  style="margin-top: 100px;">
+                <div class="d-flex flex-column flex-md-row w-100  align-items-center rounded blured-lg p-4" >
+                    <div class="col-lg-8 p-2">
+                        <h4>Графік відправлень</h4>
+                        <div id="lineChart" class="p-2" ></div>
+                    </div>
+                    <div class="col-lg-4 p-2">
+                        <h4>Діаграма відділень</h4>
+                        <div id="pieChart" class="p-2" ></div>
+                    </div>
+                </div>
+                <div id="dateChekers" class="d-flex w-75 justify-content-evenly p-4 blured-lg rounded mt-2">
+                    <label for="rbWeek"><input class="form-check-input m-1" type="radio" id="rbWeek"
+                        name="dateInterval" value="week">Тиждень</label>
+        
+                  
+                    <label for="rbMonth"><input class="form-check-input m-1" type="radio" id="rbMonth"
+                        name="dateInterval" value="month">Місяць</label>
+        
+                  
+                    <label for="rbCwartal"><input class="form-check-input m-1" type="radio" id="rbCwartal"
+                        name="dateInterval" value="cwartal"> Квартал</label>
+        
+                  
+                    <label for="rbYear"><input class="form-check-input m-1" type="radio" id="rbYear"
+                        name="dateInterval" value="year" checked>Рік</label>
+
+                    <label for="rbYear"><input class="form-check-input m-1" type="radio" id="rbYear"
+                            name="dateInterval" value="all" checked>Увесь час</label>
+                </div>
+                <div class="align-self-end">
+                    <p class="pt-4 px-4">
+                        Загальна кількість відправлень: <%- sendings.length %>
+                    </p>
+                </div>
+            </section>
+        </div>
+        <%- include('../parts/footer.ejs') %>
+
+
+        <script>
+            const sendings = <%- JSON.stringify(sendings) %>;
+            
+        </script>
+        <script src="https://www.gstatic.com/charts/loader.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+        <script src="../scripts/admin/chart.js"></script>
+      
+    </body>
+</html>
